@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS TwoGs;
+
+USE TwoGs;
+
+CREATE TABLE IF NOT EXISTS Torneos (
+    ID INTEGER NOT NULL UNIQUE,
+    Nombre TEXT,
+    Sede TEXT,
+    Fecha TEXT,
+    Premio NUMERIC,
+    Categoria TEXT,
+    PRIMARY KEY(ID)
+);
