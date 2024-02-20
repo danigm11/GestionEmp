@@ -61,7 +61,7 @@ def editarEstadisticas(id):
     cur = con.cursor()
     estadisticasEditadas = request.get_json()
     
-    cur.execute("UPDATE Estadisticas SET KDA = ?, Asesinatos = ?, Muertes = ?, Asistencias = ?, \"Partidos-jugados\" = ? WHERE \"ID-Jugador\" = ?",
+    cur.execute("UPDATE Estadisticas SET KDA = ?, Asesinatos = ?, Muertes = ?, Asistencias = ?, \"Partidos-jugados\" = ?, \"ID-Jugador\" = ?",
                 (estadisticasEditadas['KDA'], estadisticasEditadas['Asesinatos'], estadisticasEditadas['Muertes'], estadisticasEditadas['Asistencias'], estadisticasEditadas['Partidos-jugados'], id))
     con.commit()
     con.close()
