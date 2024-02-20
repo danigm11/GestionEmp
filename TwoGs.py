@@ -1,17 +1,21 @@
 from flask import Flask, request
-import sqlite3
-import json 
+
 import equipos
 import json
 import Torneos
 
 app = Flask(__name__)
 
-# End points tabla equipos // Daniel Martín Sáiz
-
 with open('config.json', 'r') as myfile:
     data=myfile.read()
 obj = json.loads(data)
+
+
+@app.route('/')
+def hello():
+    return "<p><Inicio</p>"
+
+# End points tabla equipos /////////////////// Daniel Martín Sáiz //////////////
 
 # Muestra la lista de todos los equipos.
 @app.route('/equipos', methods=['GET'])
@@ -61,20 +65,10 @@ def obtener_jugadores_equipo(id_equipo):
 def nuevo_jugador():
     return equipos.add_jugador()
 
-# FÍN End points tabla equipos // Daniel Martín Sáiz
+# FÍN End points tabla equipos // Daniel Martín Sáiz ////////////////////////////////////////
 
 
-with open('config.json', 'r') as myfile:
-
-   data=myfile.read()
-obj = json.loads(data)
-
-print (obj["dbname"])
-
-@app.route('/')
-def hello():
-    return "<p><Inicio</p>"
-
+# End points tabla torneos /////////////////// Daniel García Mesa //////////////
 @app.route('/torneos')
 def leerTorneos():
     return Torneos.listaTorneos()
@@ -102,5 +96,7 @@ def verTorneo(id):
 @app.route('/equipos')
 def equipos():
     return "<pEquipos</p>"
+
+# FÍN End points tabla torneos // Daniel García Mesa ////////////////////////////////////////
 
 

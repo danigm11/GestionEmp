@@ -35,13 +35,13 @@ CREATE TABLE IF NOT EXISTS Equipos (
     PRIMARY KEY(ID)
 );
 
-CREATE TABLE "Jugadores" (
-	"ID"	INTEGER UNIQUE,
-	"Nombre"	TEXT,
-	"Nacionalidad"	BLOB,
-	"Edad"	INTEGER,
-	"Rol"	TEXT,
-	"IDEquipo"	INTEGER,
-	PRIMARY KEY("ID" AUTOINCREMENT),
-	FOREIGN KEY("IDEquipo") REFERENCES "Equipos"("ID")
+CREATE TABLE Jugadores (
+	ID	INTEGER UNIQUE,
+	Nombre	TEXT,
+	Nacionalidad	BLOB,
+	Edad	INTEGER,
+	Rol	TEXT,
+	IDEquipo	INTEGER,
+	PRIMARY KEY(ID AUTOINCREMENT),
+	FOREIGN KEY(IDEquipo) REFERENCES Equipos(ID)
 )
