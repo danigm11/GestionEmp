@@ -21,7 +21,7 @@ def listaEstadisticas():
     con.close()
     return json.dumps(lista_estadisticas)
 
-def listaEstadisticasKDApositivo(KDA):
+def listaEstadisticasKDA(KDA):
     con = sqlite3.connect(obj["dbname"])
     cur = con.cursor()
     cur.execute("SELECT * FROM Estadisticas WHERE KDA = ?",
@@ -61,7 +61,7 @@ def editarEstadisticas(id):
     cur = con.cursor()
     estadisticasEditadas = request.get_json()
     
-    cur.execute("UPDATE ESTADISTICAS SET KDA = ?, Asesinatos = ?, Muertes = ?, Asistencias = ?, \"Partidos-jugados\" = ? WHERE \"ID-Jugador\" = ?",
+    cur.execute("UPDATE Estadisticas SET KDA = ?, Asesinatos = ?, Muertes = ?, Asistencias = ?, \"Partidos-jugados\" = ? WHERE \"ID-Jugador\" = ?",
                 (estadisticasEditadas['KDA'], estadisticasEditadas['Asesinatos'], estadisticasEditadas['Muertes'], estadisticasEditadas['Asistencias'], estadisticasEditadas['Partidos-jugados'], id))
     con.commit()
     con.close()

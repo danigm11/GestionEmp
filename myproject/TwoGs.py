@@ -21,7 +21,7 @@ def leerEstadistica():
 
 @app.route('/estadisticas/<string:KDA>')
 def leer(KDA):
-    return Estadisticas.listaEstadisticasKDApositivo(KDA)
+    return Estadisticas.listaEstadisticasKDA(KDA)
 
 @app.route('/estadisticas/nuevas')
 def nuevasEstadistica():
