@@ -3,6 +3,7 @@ import Jugadores
 import Equipos
 import json
 import Torneos
+import Estadisticas
 
 app = Flask(__name__)
 
@@ -127,3 +128,31 @@ def verJugador(id):
     return Jugadores.verJugador(id)
 
 # FÍN End points tabla Jugadores // Adolfo Burgos Belgrano ////////////////////////////////////////
+
+# End points tabla Estadísticas // Gonzalo Ruiz Azuar ////////////////////////////////////////
+
+@app.route('/estadisticas')
+def leerEstadistica():
+    return Estadisticas.listaEstadisticas()
+
+@app.route('/estadisticas/<string:KDA>')
+def leerKDA(KDA):
+    return Estadisticas.listaEstadisticasKDA(KDA)
+
+@app.route('/estadisticas/nuevas')
+def nuevasEstadistica():
+    return Estadisticas.nuevasEstadisticas()
+
+@app.route('/estadisticas/borrar/<int:id>')
+def borrarEstadistica(id):
+    return Estadisticas.borrarEstadisticas(id)
+
+@app.route('/estadisticas/editar/<int:id>')
+def editarEstadistica(id):
+    return Estadisticas.editarEstadisticas(id)
+
+@app.route('/estadisticas/mostrar/<int:id>')
+def verEstadistica(id):
+    return Estadisticas.verEstadisticas(id)
+
+# End points tabla Estadísticas // Gonzalo Ruiz Azuar ////////////////////////////////////////
