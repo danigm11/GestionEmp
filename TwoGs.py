@@ -1,5 +1,5 @@
 from flask import Flask, request
-
+import Jugadores
 import Equipos
 import json
 import Torneos
@@ -100,3 +100,30 @@ def equipos():
 # FÍN End points tabla torneos // Daniel García Mesa ////////////////////////////////////////
 
 
+
+# Principio End points tabla Jugadores // Adolfo Burgos Belgrano ////////////////////////////////////////
+@app.route('/Jugadores')
+def leerJugadores():
+    return Jugadores.listaJugadores()
+
+@app.route('/Jugadores/edad/<int:edad>')
+def leer(edad):
+    return Jugadores.listaJugadoresPorEdad(edad)
+
+@app.route('/Jugadores/nuevo')
+def nuevoJugador():
+    return Jugadores.nuevoJugador()
+
+@app.route('/Jugadores/borrar/<int:id>')
+def borrarJugador(id):
+    return Jugadores.borrarJugador(id)
+
+@app.route('/Jugadores/modificar/<int:id>')
+def modificarJugador(id):
+    return Jugadores.ModificarJugador(id)
+
+@app.route('/Jugadores/mostrar/<int:id>')
+def verJugador(id):
+    return Jugadores.verJugador(id)
+
+# FÍN End points tabla Jugadores // Adolfo Burgos Belgrano ////////////////////////////////////////
