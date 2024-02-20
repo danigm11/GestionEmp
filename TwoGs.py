@@ -1,6 +1,6 @@
 from flask import Flask, request
 import Jugadores
-import Equipos
+import Equipos2
 import json
 import Torneos
 import Estadisticas
@@ -21,50 +21,50 @@ def hello():
 # Muestra la lista de todos los equipos.
 @app.route('/equipos', methods=['GET'])
 def lista_equipos():
-    return Equipos.get_equipos()
+    return Equipos2.get_equipos()
 
 #  Muestra los datos del equipo con esa id.
 @app.route('/equipos/<int:id>', methods=['GET'])
 def obtener_equipo(id):
-    return Equipos.obtener_equipo(id)
+    return Equipos2.obtener_equipo(id)
 
 # Muestra los dados del equipo con ese nombre, variable hay que pasarla mediante Params
 @app.route('/equipos/filtrar_por_nombre', methods=['GET'])
 def filtrar_equipos_por_nombre():
     nombre_equipo = request.args.get('nombre')
-    return Equipos.listaEquiposPorNombre(nombre_equipo)
+    return Equipos2.listaEquiposPorNombre(nombre_equipo)
 
 
 # Muestra los dados del equipo con más mundiales que los pasados por id, variable hay que pasarla mediante Params
 @app.route('/equipos/filtrar_por_titulos_mundiales', methods=['GET'])
 def filtrar_equipos_por_titulos_mundiales():
     num_titulos = request.args.get('num_titulos')
-    return Equipos.listaEquiposConMasDeNTitulosMundiales(num_titulos)
+    return Equipos2.listaEquiposConMasDeNTitulosMundiales(num_titulos)
 
 # Añadir equipo
 @app.route('/equipos', methods=['POST'])
 def añadir_equipo():
-    return Equipos.add_equipo()
+    return Equipos2.add_equipo()
 
 # Modificar equipo
 @app.route('/equipos/<int:id>', methods=['PUT'])
 def modificar_equipo(id):
-    return Equipos.update_equipo(id)
+    return Equipos2.update_equipo(id)
 
 # Borrar equipo
 @app.route('/equipos/<int:id>', methods=['DELETE'])
 def borrar_equipo(id):
-    return Equipos.delete_equipo(id)
+    return Equipos2.delete_equipo(id)
 
 # Ver jugadores en un equipo, conexión entre tablas
 @app.route('/equipos/<int:id_equipo>/jugadores', methods=['GET'])
 def obtener_jugadores_equipo(id_equipo):
-    return Equipos.get_jugadores(id_equipo)
+    return Equipos2.get_jugadores(id_equipo)
 
 # Añadir jugadores, necesario para la petición anterior
 @app.route('/jugadoresD', methods=['POST'])
 def nuevo_jugador():
-    return Equipos.add_jugador()
+    return Equipos2.add_jugador()
 
 # FÍN End points tabla equipos // Daniel Martín Sáiz ////////////////////////////////////////
 
@@ -108,7 +108,7 @@ def leerJugadores():
     return Jugadores.listaJugadores()
 
 @app.route('/Jugadores/edad/<int:edad>')
-def leer(edad):
+def leerEdad(edad):
     return Jugadores.listaJugadoresPorEdad(edad)
 
 @app.route('/Jugadores/nuevo')
